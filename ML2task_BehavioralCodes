@@ -1,0 +1,117 @@
+Code	Description
+1	START trial
+2	Fixation ON
+3	Fixation HELD
+4	Fixation OFF
+5	Fixation not acquired
+6	Fixation acquired
+7	Fixation break
+8	Fixation FakeBreak
+9	ML START
+10	Target ON
+11	Target OFF
+12	Target NOT Aquired
+13	Target Acquired
+14	CORRECT TRIAL
+15	Target missed
+16	Target fixation break
+17	Max RT exceeded
+18	ML END
+19	Distractor Acquired
+20	undefined
+21	Target Array ON
+22	Target Array OFF
+23	Target Array NOT Aquired
+24	Target Array Missed
+25	Target Array BREAK
+26	Target Array Aquired
+27	Target Array Disractor fixated
+28	undefined
+29	undefined
+30	undefined
+31	Cue ON
+32	Cue OFF
+33	Cue NOT aquired
+34	Cue Missed
+35	Cue BREAK fixation
+36	Cue Aquired
+37	Cue Wrongly Fixated
+38	undefined
+39	undefined
+40	Exemplar ON
+41	Exemplar HELD
+42	Exemplar OFF
+43	Exemplar not acquired
+44	Exemplar acquired
+45	Exemplar break
+46	undefined
+47	undefined
+48	undefined
+49	undefined
+50	idleTime START
+51	idleTime at Fixation
+52	idleTime at Target
+53	idleTime END
+54	undefined
+55	undefined
+56	undefined
+57	undefined
+58	undefined
+59	undefined
+60	undefined
+61	CueGo ON
+62	CueGo OFF
+63	CueGo NOT aquired
+64	CueGo Missed
+65	CueGo BREAK fixation
+66	CueGo Aquired
+67	CueGo Wrongly Fixated
+68	undefined
+69	undefined
+70	undefined
+71	Delay ON
+72	Delay OFF
+73	Delay NOT acquired
+74	Delay Missed
+75	Delay BREAK fixation
+76	Delay Acquired
+77	Delay Wrongly Fixated
+78	undefined
+79	undefined
+80	undefined
+81	undefined
+82	undefined
+83	undefined
+84	undefined
+85	undefined
+86	undefined
+87	undefined
+88	undefined
+89	undefined
+90	undefined
+91	undefined
+92	undefined
+93	undefined
+94	undefined
+95	undefined
+96	Buzz ON
+97	WRONG Buzz ON
+98	Reward ON
+99	Reward OFF
+100	END trial
+101	undefined
+102	undefined
+103	undefined
+104	undefined
+105	undefined
+106	undefined
+107	undefined
+108	undefined
+109	undefined
+110	Key press <Space>
+111	Key press <Up>
+112	Key press <Down>
+113	Key press <Right>
+114	Key press <Left>
+115	Key press <enter>
+116	Key press (other)
