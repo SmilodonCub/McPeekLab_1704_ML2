@@ -56,6 +56,7 @@ pix_per_degvisang = MLConfigTemplate.PixelsPerDegree( 1 );
 
 [task_folder, timing_file] = fileparts('C:\MonkeyLogic2\Experiments\catSearchPHYSIOL_ML2\CatSearch_Physiol_ML2');
 if strcmp(category, 'BFly')
+    print( 'BFly!' )
     fix_rgb = [ 0 0 1]; %Blue fixation square.
     target_index_ids = [ 1 2 3 4 5 6 7 8 9 10 ];
     load('bflysimilarity.mat') %bearsimilarity matrix ranks the chi^2 distance
@@ -74,6 +75,7 @@ if strcmp(category, 'BFly')
         targetsimilarity{ ii,1 } = new_name;
     end
 elseif strcmp(category, 'Bear')
+    print( 'Bear!' )
     fix_rgb = [ 1 0 0 ]; %Red fixation square
     target_index_ids = [ 84 36 147 25 40 123 99 102 10 57 ];
     %bear similarity by target
@@ -92,6 +94,8 @@ elseif strcmp(category, 'Bear')
         new_name = [ char(entry_split(1)) 'Bear_' char(entry_split(2)) ];
         targetsimilarity{ ii,1 } = new_name;
     end
+elseif ~strcmp(category, 'Bear') || ~strcmp(category, 'BFly')
+    print('error with category input')
 end
 
 [ ~, I] = sort( cell2mat( targetsimilarity( :,3:end ) ) ); %'ascending'
@@ -101,7 +105,7 @@ target50DIS = targetsimilarity( I( 1:50, : ), 1 ); %50 least similar for each ta
 target50DIS = reshape( target50DIS, [ 50, 10 ] );
 
 
-TAB_rgb = [ 0.5 0.5 0.5 ]; %mid gray
+TAB_rgb = [ 0.5 0.5 1 ]; %mid gray
 fix_fill = 1; %0/1 == open/filled Sqr object
 TAB_fill = 1;
 
@@ -127,7 +131,7 @@ Dsize_pixels = ceil(dist_size * pix_per_degvisang);
 
 %INDEXES TO SET UP Target/NOTarget
 if num_distract
-    percent_NOtarget = 0;
+    percent_NOtarget = 50;
 else
     percent_NOtarget = 0;
 end
@@ -183,14 +187,15 @@ for jjj = 1:num_blocks
         distractor_index = randi( stream,  size(D,2), [ num_conditions, (num_distract(jj) + 1) ] );
         
         %initialize the position of the target
-        blockpos = ones( [ num_positions,num_conditions ] );
+        %blockpos = ones( [ num_positions,num_conditions ] );
         %random positioning of target within array (if distractors are present)
-        if num_distract
-            pospos = 1:num_positions;
-            blockpos = repmat( pospos', [ 1 num_conditions ] ); %a matrix with pospos' x num_conditions collumns. sum( blockpos,2 ) = 1*n, 2*n, 3*n, 4*n
-            blockpos = cell2mat( arrayfun( @( k ) circshift( blockpos( :,k ),k ),1:size( blockpos,2 ),'uni',0 ) ); %circshift each column by 1 sum( blockpos,2 ) = 2.5*n; 2.5*n; 2.5*n; 2.5*n
-            blockpos = blockpos( :,randperm( size( blockpos,2 ) ) ); %randomly permutate the order of the columns, but still sum( blockpos,2 ) = 2.5*n; 2.5*n; 2.5*n; 2.5*n
-        end
+        
+
+        pospos = 1:num_positions;
+        blockpos = repmat( pospos', [ 1 num_conditions ] ); %a matrix with pospos' x num_conditions collumns. sum( blockpos,2 ) = 1*n, 2*n, 3*n, 4*n
+        blockpos = cell2mat( arrayfun( @( k ) circshift( blockpos( :,k ),k ),1:size( blockpos,2 ),'uni',0 ) ); %circshift each column by 1 sum( blockpos,2 ) = 2.5*n; 2.5*n; 2.5*n; 2.5*n
+        blockpos = blockpos( :,randperm( size( blockpos,2 ) ) ); %randomly permutate the order of the columns, but still sum( blockpos,2 ) = 2.5*n; 2.5*n; 2.5*n; 2.5*n
+        
         
         for j = 1:num_conditions
             % target name is random interleaved from idxx
