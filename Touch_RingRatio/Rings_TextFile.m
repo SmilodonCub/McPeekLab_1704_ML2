@@ -32,12 +32,12 @@ function Rings_TextFile( fix_size, im_sizes, LineWidth, centerSize, directory, p
 %       5) directory str
 %       4) pix_per_deg num
 %%
-fix_size = 2;
-im_sizes = [2,4,8,12];
-LineWidth = 1;
-centerSize = 1;
-directory = 'C:\MonkeyLogic2\Experiments\Touch_RingRatio\';
-pix_per_deg = 16.55;
+% fix_size = 2;
+% %im_sizes = [2,4,8,12];
+% LineWidth = 1;
+% centerSize = 1;
+% directory = 'C:\MonkeyLogic2\Experiments\Touch_RingRatio\';
+% pix_per_deg = 16.55;
 %task specific
 task_folder = 'C:\MonkeyLogic2\Experiments\Touch_RingRatio';
 timing_file = 'ringTarget_reach';
@@ -78,7 +78,7 @@ names = drawManyCircles( im_sizes, LineWidth, centerSize, directory, pix_per_deg
 
 for r = 1:num_conditions
     Condition_cell_array( ( r+1 ),1:7 ) = { r, 1, 1, timing_file, correct_sound_string, wrong_sound_string, fixation };
-    crc_string = strcat( 'pic(', names( 1 ), ',0,0)' );
+    crc_string = strcat( 'pic(', names( r ), ',0,0)' );
     Condition_cell_array( ( r+1 ),8 ) =  [crc_string];
 end
 
