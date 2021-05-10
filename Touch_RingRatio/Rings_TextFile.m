@@ -32,12 +32,7 @@ function Rings_TextFile( fix_size, im_sizes, LineWidth, centerSize, directory, p
 %       5) directory str
 %       4) pix_per_deg num
 %%
-% fix_size = 2;
-% %im_sizes = [2,4,8,12];
-% LineWidth = 1;
-% centerSize = 1;
-% directory = 'C:\MonkeyLogic2\Experiments\Touch_RingRatio\';
-% pix_per_deg = 16.55;
+
 %task specific
 task_folder = 'C:\MonkeyLogic2\Experiments\Touch_RingRatio';
 timing_file = 'ringTarget_reach';
@@ -62,12 +57,12 @@ wrong_sound_string = 'Snd(sin,0.400,400.000)';
 
 %create a cell array to hold the entries for the text file
 Condition_cell_array = cell( ( num_conditions + 1 ), 4 + num_task_objects ); % 
-Condition_cell_array( 1,1:4 ) = {'Condition', 'Frequency', 'Block', 'Timing File'}; % 1st half header for the cell array
+Condition_cell_array( 1,1:5 ) = {'Condition', 'Info', 'Frequency', 'Block', 'Timing File'}; % 1st half header for the cell array
 
 %make the second half of header
 for k = 1:num_task_objects
     add_task_object = ['TaskObject#' num2str(k)];
-    Condition_cell_array( 1, ( 4 + k ) ) = { add_task_object };
+    Condition_cell_array( 1, ( 5 + k ) ) = { add_task_object };
 end
 
 
@@ -77,9 +72,11 @@ names = drawManyCircles( im_sizes, LineWidth, centerSize, directory, pix_per_deg
 
 
 for r = 1:num_conditions
-    Condition_cell_array( ( r+1 ),1:7 ) = { r, 1, 1, timing_file, correct_sound_string, wrong_sound_string, fixation };
+    circSize = im_sizes( r );
+    info_string = [ '''circSize'',''' num2str( circSize ) '''' ];
+    Condition_cell_array( ( r+1 ),1:8 ) = { r, info_string, 1, 1, timing_file, correct_sound_string, wrong_sound_string, fixation };
     crc_string = strcat( 'pic(', names( r ), ',0,0)' );
-    Condition_cell_array( ( r+1 ),8 ) =  [crc_string];
+    Condition_cell_array( ( r+1 ),9 ) =  [crc_string];
 end
 
 

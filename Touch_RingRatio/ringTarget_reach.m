@@ -80,7 +80,10 @@ delay_fix_increment = 50;       %ms to randomly add in random increasing multipl
 
 % touch window (in degrees):
 touch_window = 3;
-touch_target = 3;
+%get condition info: does this trial present a target(1) or not(0)?
+circSize= str2double(TrialRecord.CurrentConditionInfo.circSize); 
+%disp( circSize )
+touch_target = circSize/2;
 % outer limit for repositioning the touch target
 eccentricity_limit = 15;
 
@@ -190,8 +193,6 @@ if ~wth2.Success          % left fixation
        run_scene( feedbackWrong );
     end                   %     so it is the "break fixation (3)" error.
     return
-elseif wth2.Success
-    disp( 'Released Fix' )
 end
 % run_scene(scene3,30);     % Run the third (delay) scene (eventmarker 30)
 % if ~wth3.Success
