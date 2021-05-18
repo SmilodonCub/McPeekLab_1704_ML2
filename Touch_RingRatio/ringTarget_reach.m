@@ -24,7 +24,6 @@ editable('wait_for_touch')   %max time after initial_fix given to complete a sac
 editable('hold_touch_time')    %hold fixation on bear_image (msec) 
 editable('leave_fit_timeout')  %time limit to leave fixation. allows for taget/fix overlap 
 editable('touch_window')       %center disc window (deg.vis.ang.)
-editable('touch_target')       %target disc window
 editable('intTint')             %idle time inbetween conditions (msec)
 editable('reward');
 editable('num_reward');
@@ -81,9 +80,9 @@ delay_fix_increment = 50;       %ms to randomly add in random increasing multipl
 % touch window (in degrees):
 touch_window = 3;
 %get condition info: does this trial present a target(1) or not(0)?
-circSize= str2double(TrialRecord.CurrentConditionInfo.circSize); 
-%disp( circSize )
-touch_target = circSize/2;
+circSize = str2double(TrialRecord.CurrentConditionInfo.circSize); 
+disp( circSize )
+touch_target = circSize;
 % outer limit for repositioning the touch target
 eccentricity_limit = 15;
 
